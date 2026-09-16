@@ -153,7 +153,82 @@ echo "listen=YES" >> /etc/vsftpd.conf
 service vsftpd restart
 ```
 
+Pengecekan login menggunakan usn Alice:
+![alt text](image-7.png)
 
+Pengecekan login menggunakan usn Mika:
+![alt text](image-12.png)
+
+Pengecekan login menggunakan usn Eiri:
+![alt text](image-6.png)
+
+## Soal 8
+Kelompok rahasia Knights perlu mengirimkan dokumen laporan intelijen ke FTP Server Chisa. Lakukan koneksi FTP client dari node Knights ke FTP Server Chisa menggunakan akun alice. Upload file berikut (link file). Analisis sesi Wireshark dan sebutkan: perintah FTP untuk upload (STOR), kode status sukses server (226), dan port data TCP yang dinegosiasikan pada mode PASV.
+
+ada port TCP Knight (58712) dan chisa (58874) mereka melakukan TCP Handshake untuk STOR Knight_report.txt.
+![alt text](image-10.png)
+
+## Soal 9
+Mika mengakses dokumen Protokol Tujuh di (link file) dari FTP Server Chisa. Dari node Mika, unduh file tersebut menggunakan akun mika. Setelah itu, buktikan pembatasan read-only dengan mencoba mengunggah file baru dari akun mika, dan tunjukkan pesan error respon server (error 550 Permission denied) saat mika mencoba melakukan upload.
+
+upload sementara menggunakan alice:
+![alt text](image-13.png)
+
+download file protocol7:
+![alt text](image-16.png)
+
+pembuktian read-only:
+![alt text](image-15.png)
+
+
+## Soal 10
+
+Knights melancarkan uji ketahanan koneksi ke server Chisa untuk menguji latensi jaringan The Wired. Kirimkan paket ping dari node Knights ke node Chisa dengan payload khusus 128 bytes dan interval 0.3 detik sebanyak 77 paket (ping -c 77 -s 128 -i 0.3 <IP_Chisa>). Buka Wireshark, catat nilai ICMP Type dan Code untuk Echo Request vs Echo Reply, serta analisis packet loss dan RTT (min/avg/max).
+
+Request type (8) dan code (0):
+![alt text](image-18.png)
+
+Reply type (0) dan code (0)
+![alt text](image-19.png)
+
+Analisis Packet loss dan RTT:
+![alt text](image-17.png)
+
+## Soal 11
+
+Buktikan kelemahan protokol Telnet dengan membuat akun phantom_user dan password wired_ghost pada layanan telnetd di node Chisa. Lakukan login Telnet dari node Eiri ke node Chisa dan tangkap sesi menggunakan Wireshark. Tunjukkan kredensial plain text melalui fitur Follow TCP Stream, serta jelaskan mengapa setiap karakter terkirim dalam paket TCP terpisah.
+
+kredensial plain text:
+![alt text](image-20.png)
+
+Setiap karakter terkirim dalam paket TCP terpisah karena Telnet dirancang untuk interaksi terminal secara interaktif. Dalam mode karakter, ketika user menekan sebuah tombol, client dapat langsung mengirim karakter tersebut ke server tanpa menunggu user menekan Enter.
+
+## Soal 12
+
+Alice mencurigai Knights menjalankan beberapa layanan rahasia di node-nya. Lakukan pemindaian port dari node Alice ke node Knights menggunakan Netcat (nc) untuk memeriksa port 22 (SSH) dan 80 (HTTP) dalam keadaan terbuka, serta port rahasia 7777 dalam keadaan tertutup. Analisis di Wireshark perbedaan TCP Flag yang dikembalikan antara port terbuka (SYN-ACK) dengan port tertutup (RST-ACK).
+
+![alt text](image-21.png)
+
+Apabila netcat ke port yang terbuka akan terjadi threeway handshake dan apabila ke port yang tertutup itu akan mengembalikan RST,ACK.
+
+## Soal 13
+Lain memerintahkan agar administrasi jarak jauh menggunakan SSH secara aman tanpa password. Install OpenSSH server pada node Knights, buat pasangan kunci SSH (ssh-keygen) pada node Mika untuk user mika_admin, dan konfigurasikan public key authentication (PasswordAuthentication no). Lakukan koneksi SSH dari node Mika ke node Knights, tangkap sesi menggunakan Wireshark, identifikasi paket Protocol Version Exchange dan Key Exchange, serta jelaskan mengapa kredensial tidak terlihat dalam bentuk teks terbuka seperti pada Telnet.
+
+install SSH pada node knight:
+![alt text](image-24.png)
+
+Buat pasangan kunci SSH pada mika:
+![alt text](image-25.png)
+
+Protocol versioin exchange:
+![alt text](image-22.png)
+
+Key exchange:
+![alt text](image-23.png)
+
+Kredensial tidak terlihat seperti telnet karena SSH melakukan proses kriptografi terlebih dahulu. Setelah proses key exchange, komunikasi SSH dilindungi oleh enkripsi sehingga isi autentikasi dan data sesi tidak dapat dibaca sebagai teks biasa hanya dengan Follow TCP Stream.
+
+## Soal 14
 
 
 
