@@ -83,6 +83,7 @@ Agar bisa berkomunikasi satu sama lain yaitu dengan menambahkan konfigurasi rout
 `sysctl -w net.ipv4.ip_forward=1`
 
 contoh ping client lain:
+
 ![alt text](image-2.png)
 
 ## Soal 4
@@ -154,12 +155,15 @@ service vsftpd restart
 ```
 
 Pengecekan login menggunakan usn Alice:
+
 ![alt text](image-7.png)
 
 Pengecekan login menggunakan usn Mika:
+
 ![alt text](image-12.png)
 
 Pengecekan login menggunakan usn Eiri:
+
 ![alt text](image-6.png)
 
 ## Soal 8
@@ -172,12 +176,15 @@ ada port TCP Knight (58712) dan chisa (58874) mereka melakukan TCP Handshake unt
 Mika mengakses dokumen Protokol Tujuh di (link file) dari FTP Server Chisa. Dari node Mika, unduh file tersebut menggunakan akun mika. Setelah itu, buktikan pembatasan read-only dengan mencoba mengunggah file baru dari akun mika, dan tunjukkan pesan error respon server (error 550 Permission denied) saat mika mencoba melakukan upload.
 
 upload sementara menggunakan alice:
+
 ![alt text](image-13.png)
 
 download file protocol7:
+
 ![alt text](image-16.png)
 
 pembuktian read-only:
+
 ![alt text](image-15.png)
 
 
@@ -186,12 +193,15 @@ pembuktian read-only:
 Knights melancarkan uji ketahanan koneksi ke server Chisa untuk menguji latensi jaringan The Wired. Kirimkan paket ping dari node Knights ke node Chisa dengan payload khusus 128 bytes dan interval 0.3 detik sebanyak 77 paket (ping -c 77 -s 128 -i 0.3 <IP_Chisa>). Buka Wireshark, catat nilai ICMP Type dan Code untuk Echo Request vs Echo Reply, serta analisis packet loss dan RTT (min/avg/max).
 
 Request type (8) dan code (0):
+
 ![alt text](image-18.png)
 
-Reply type (0) dan code (0)
+Reply type (0) dan code (0):
+
 ![alt text](image-19.png)
 
 Analisis Packet loss dan RTT:
+
 ![alt text](image-17.png)
 
 ## Soal 11
@@ -215,15 +225,19 @@ Apabila netcat ke port yang terbuka akan terjadi threeway handshake dan apabila 
 Lain memerintahkan agar administrasi jarak jauh menggunakan SSH secara aman tanpa password. Install OpenSSH server pada node Knights, buat pasangan kunci SSH (ssh-keygen) pada node Mika untuk user mika_admin, dan konfigurasikan public key authentication (PasswordAuthentication no). Lakukan koneksi SSH dari node Mika ke node Knights, tangkap sesi menggunakan Wireshark, identifikasi paket Protocol Version Exchange dan Key Exchange, serta jelaskan mengapa kredensial tidak terlihat dalam bentuk teks terbuka seperti pada Telnet.
 
 install SSH pada node knight:
+
 ![alt text](image-24.png)
 
 Buat pasangan kunci SSH pada mika:
+
 ![alt text](image-25.png)
 
 Protocol versioin exchange:
+
 ![alt text](image-22.png)
 
 Key exchange:
+
 ![alt text](image-23.png)
 
 Kredensial tidak terlihat seperti telnet karena SSH melakukan proses kriptografi terlebih dahulu. Setelah proses key exchange, komunikasi SSH dilindungi oleh enkripsi sehingga isi autentikasi dan data sesi tidak dapat dibaca sebagai teks biasa hanya dengan Follow TCP Stream.
