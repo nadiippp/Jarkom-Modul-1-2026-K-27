@@ -4,7 +4,7 @@
 
 | Nama | NRP |
 | :--- | :--- |
-| Muhammad Nadhif Pasya Ikhsan | 5027251021 |
+| Muhammad Nadhif Pasya Ikhsan | 5027251084 |
 | Akhdan Hafiz Anugrah | 5027251094 |
 
 ## Soal 1
